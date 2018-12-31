@@ -63,7 +63,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   //Variables
   var operand1;
   var operand2;
@@ -75,7 +74,7 @@ class _HomePageState extends State<HomePage> {
   TextStyle _whiteTextStyle = TextStyle(color: Colors.white, fontSize: 35.0);
 
   @override
-  void initState() {    
+  void initState() {
     super.initState();
 
     initialiseValues();
@@ -152,134 +151,97 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-
+              //--------------------
+              //Calculator Buttons
+              //--------------------
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  UnaryOperatorButton(
-                    text: clear_sign,
-                    onPressed: () {
-                      _otherOperationAction(OtherOperation.clear);
-                    },
+                  Column(
+                    children: <Widget>[
+                      NumberButton(
+                        name: "ANS",
+                        onPressed: () {
+                          //AGREGAR FUNCION;
+                        },
+                      ),
+                      NumberButton(
+                        name: ".",
+                        onPressed: () {
+                          _otherOperationAction(OtherOperation.addDecimal);
+                        },
+                      ),
+                      NumberButton(
+                        name: "0",
+                        onPressed: () {
+                          _zeroButtonAction();
+                        },
+                      ),
+                    ],
                   ),
-                  UnaryOperatorButton(
-                    text: plus_or_minus_sign,
-                    onPressed: () {
-                      _unaryOperationAction(UnaryOperation.changeSign);
-                    },
+                  Column(
+                    children: <Widget>[
+                      NumberButton(
+                        name: "DEL",
+                        onPressed: () {
+                          _otherOperationAction(OtherOperation.clear);
+                        },
+                      ),
+                      NumberButton(
+                        name: "+/-",
+                        onPressed: () {
+                          _unaryOperationAction(UnaryOperation.changeSign);
+                        },
+                      ),
+                      NumberButton(
+                        name: "1",
+                        onPressed: () {
+                          _numberButtonAction("1");
+                        },
+                      ),
+                    ],
                   ),
-                  UnaryOperatorButton(
-                    text: percent_sign,
-                    onPressed: () {
-                      _unaryOperationAction(UnaryOperation.percent);
-                    },
+                  Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          BinaryOperatorButton(
+                            name: divide_sign,
+                            onPressed: () {
+                              _binaryOperationAction(BinaryOperation.divide);
+                            },
+                          ),
+                          BinaryOperatorButton(
+                            name: "-",
+                            onPressed: () {
+                              _binaryOperationAction(BinaryOperation.subtract);
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          BinaryOperatorButton(
+                            name: multiply_sign,
+                            onPressed: () {
+                              _binaryOperationAction(BinaryOperation.multiply);
+                            },
+                          ),
+                          BinaryOperatorButton(
+                            name: add_sign,
+                            onPressed: () {
+                              _binaryOperationAction(BinaryOperation.add);
+                            },
+                          ),
+                        ],
+                      ),
+                      EqualButton(
+                        name: equal_sign,
+                        onPressed: () {
+                          _otherOperationAction(OtherOperation.equals);
+                        },
+                      ),
+                    ],
                   ),
-                  BinaryOperatorButton(
-                    name: divide_sign,
-                    onPressed: () {
-                      _binaryOperationAction(BinaryOperation.divide);
-                    },
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  NumberButton(
-                      name: "7",
-                      onPressed: () {
-                        _numberButtonAction("7");
-                      }),
-                  NumberButton(
-                      name: "8",
-                      onPressed: () {
-                        _numberButtonAction("8");
-                      }),
-                  NumberButton(
-                      name: "9",
-                      onPressed: () {
-                        _numberButtonAction("9");
-                      }),
-                  BinaryOperatorButton(
-                    name: multiply_sign,
-                    onPressed: () {
-                      _binaryOperationAction(BinaryOperation.multiply);
-                    },
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  NumberButton(
-                      name: "4",
-                      onPressed: () {
-                        _numberButtonAction("4");
-                      }),
-                  NumberButton(
-                      name: "5",
-                      onPressed: () {
-                        _numberButtonAction("5");
-                      }),
-                  NumberButton(
-                      name: "6",
-                      onPressed: () {
-                        _numberButtonAction("6");
-                      }),
-                  BinaryOperatorButton(
-                    name: minus_sign,
-                    onPressed: () {
-                      _binaryOperationAction(BinaryOperation.subtract);
-                    },
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  NumberButton(
-                      name: "1",
-                      onPressed: () {
-                        _numberButtonAction("1");
-                      }),
-                  NumberButton(
-                      name: "2",
-                      onPressed: () {
-                        _numberButtonAction("3");
-                      }),
-                  NumberButton(
-                      name: "3",
-                      onPressed: () {
-                        _numberButtonAction("3");
-                      }),
-                  BinaryOperatorButton(
-                    name: add_sign,
-                    onPressed: () {
-                      _binaryOperationAction(BinaryOperation.add);
-                    },
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  ZeroButton(
-                    onPressed: () {
-                      _zeroButtonAction();
-                    },
-                  ),
-                  BinaryOperatorButton(
-                    name: ".",
-                    onPressed: () {
-                      _otherOperationAction(OtherOperation.addDecimal);
-                    },
-                  ),
-                  EqualButton(
-                    name: equal_sign,
-                    onPressed: () {
-                      _otherOperationAction(OtherOperation.equals);
-                    },
-                  )
                 ],
               ),
             ],
